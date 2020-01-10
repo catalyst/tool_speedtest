@@ -136,3 +136,12 @@ $location = $info['country'] . ' - ' . $info['city'];
 </div>
 <?php
 echo $OUTPUT->footer();
+
+$event = \tool_speedtest\event\speedtest_result::create(array(
+    'other' => array(
+        'ip' => $ip,
+        'location' => $location,
+        'network' => 'unknown',
+    ),
+));
+$event->trigger();
